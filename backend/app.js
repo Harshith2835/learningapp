@@ -12,7 +12,9 @@ connectdb();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-
+app.get("/",(req,res)=>{
+    res.send("helloworld")
+})
 app.use('/api/users', userRoutes);
 app.use('/api/lessons', lessonRoutes);
 

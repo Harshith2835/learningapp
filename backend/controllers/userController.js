@@ -36,7 +36,6 @@ const CreateUser = asyncHandler(async (req, res) => {
         id: user._id,
         username: user.username, // Fixed typo `usernmae`
         email: user.email,
-        isAdmin: user.isAdmin,
       },
     });
 
