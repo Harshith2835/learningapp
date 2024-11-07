@@ -1,5 +1,5 @@
 // controllers/lessonController.js
-import Lesson from '../models/lessonModel.js';
+import Lesson from "../model/lessonModel.js"
 
 const getAllLessons = async (req, res) => {
   const lessons = await Lesson.find({});

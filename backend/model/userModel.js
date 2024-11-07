@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   points: { type: Number, default: 0 },  // Points for gamification
-  isAdmin: { type: Boolean, default: false },
 }, {
   timestamps: true,
 });
