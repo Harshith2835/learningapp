@@ -1,14 +1,45 @@
 // models/lessonModel.js
 import mongoose from 'mongoose';
 
-const lessonSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  language: { type: String, required: true },
-  difficulty: { type: String, required: true },  // E.g., beginner, intermediate, advanced
-  points: { type: Number, required: true },  // Points awarded for completing the lesson
-}, {
-  timestamps: true,
+const questionSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  options: [{
+    type: String,
+    required: true,
+    trim: true
+  }],
+  correctAnswer: {
+    type: String,
+    required: true,
+    trim: true
+  }
 });
 
-export default mongoose.model('Lesson', lessonSchema);
+const lessonSchema = new mongoose.Schema({
+  topic: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  level: {
+    type: String,
+    required: true,
+    enum: ['beginner', 'intermediate', 'advanced']
+  },
+  content: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  questions: [questionSchema]
+}, {
+  timestamps: true
+});
+
+const Lesson = mongoose.model('Lesson', lessonSchema);
+
+export default Lesson;

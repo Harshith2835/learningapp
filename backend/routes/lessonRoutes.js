@@ -1,8 +1,13 @@
-// routes/lessonRoutes.js
 import express from 'express';
-import { getAllLessons, addLesson } from '../controllers/lessonController.js';
+import { createLessons, getLessonsByTopic } from '../controllers/lessonController.js';
+import { authenticate } from '../middleware/authMidleware.js';
 
 const router = express.Router();
-router.route('/').get(getAllLessons).post(addLesson);
+
+// Route to generate lessons (protected)
+router.post('/generate', authenticate, createLessons);
+
+// Route to fetch lessons by topic (public or protected based on your needs)
+router.get('/:topic', authenticate, getLessonsByTopic);
 
 export default router;
