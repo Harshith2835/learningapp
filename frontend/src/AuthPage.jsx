@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import './styles/authpage.css'
 
 export default function AuthPage() {
   const [searchParams] = useSearchParams();
   const initialMode = searchParams.get('mode') === 'signup' ? false : true; // If 'signup' is passed, start with Sign up
   const [isLogin, setIsLogin] = useState(initialMode);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleAuthMode = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
+  };
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    if (email === 'mern@gmail.com' && password === '12345') {
+      setIsAuthenticated(true);
+    } else {
+      alert('Invalid email or password');
+    }
+  };
+
+  const handleSignupSubmit = (event) => {
+    event.preventDefault();
+    // Handle signup logic here, e.g., send data to an API
+    alert('Signup is not implemented yet');
   };
 
   useEffect(() => {
@@ -18,23 +36,33 @@ export default function AuthPage() {
 
   return (
     <div className='auth-page-container'>
-        <div className="auth-page">
+      <div className="auth-page">
         <h2>{isLogin ? 'Log in to PixelSpeak' : 'Sign up for PixelSpeak'}</h2>
-        
+
         {isLogin ? (
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleLoginSubmit}>
             <label>
               Email:
-              <input type="email" required />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </label>
             <label>
               Password:
-              <input type="password" required />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </label>
             <button type="submit">Log in</button>
           </form>
         ) : (
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={handleSignupSubmit}>
             <label>
               Name:
               <input type="text" required />
@@ -50,14 +78,22 @@ export default function AuthPage() {
             <button type="submit">Sign up</button>
           </form>
         )}
-        
+
         <p className="toggle-auth">
           {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
           <button onClick={toggleAuthMode} className="toggle-button">
             {isLogin ? 'Sign up' : 'Log in'}
           </button>
         </p>
+
+        {/* If authenticated, show link to dashboard */}
+        {isAuthenticated && (
+          <div className="auth-success">
+            <p>Login successful!</p>
+            <Link to="/dashboard" className="dashboard-link">Go to Dashboard</Link>
+          </div>
+        )}
       </div>
     </div>
   );
-};
+}

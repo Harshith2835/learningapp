@@ -1,0 +1,77 @@
+/* Dashboard Container */
+.dashboard-container {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+/* Progress Bar */
+.progress-bar-background {
+  background-color: #e0e0e0;
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progress-bar {
+  background-color: #4c9aff;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lesson-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.lesson-progress {
+  font-size: 14px;
+  color: #777;
+}
+
+.lesson-progress-bar-background {
+  width: 100px;
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+}
+
+.lesson-progress-bar {
+  height: 4px;
+  background-color: #4caf50;
+  border-radius: 2px;
+}
