@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import '../styles/start.css';
-import Header from '../components/Header';
 
 export default function Start() {
   const navigate = useNavigate();

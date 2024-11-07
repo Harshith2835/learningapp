@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   gap: 50px;
   margin: 60px auto 0;
-  padding: 0 20px; /* Padding for smaller screens */
+  padding: 0 20px; 
   max-width: 900px;
 }
 
@@ -59,9 +59,6 @@
   color: #111418;
 }
 
-/* Media queries for responsiveness */
-
-/* Medium screens (tablets, small desktops) */
 @media (max-width: 1024px) {
   .homepage-section {
     margin-left: 200px;
@@ -77,7 +74,6 @@
   }
 }
 
-/* Small screens (large phones, tablets in portrait) */
 @media (max-width: 768px) {
   .homepage-section {
     margin-left: 80px;
@@ -98,7 +94,6 @@
   }
 }
 
-/* Extra small screens (phones) */
 @media (max-width: 480px) {
   .homepage-section {
     margin: 50px auto 0;
