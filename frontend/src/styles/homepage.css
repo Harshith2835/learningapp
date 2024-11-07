@@ -49,12 +49,12 @@
   font-weight: bold;
 }
 
-.login-section button:first-of-type {
+.login-button {
   background-color: #338de6;
   color: white;
 }
 
-.login-section button:last-of-type {
+.signup-button {
   background-color: #f0f2f4;
   color: #111418;
 }
