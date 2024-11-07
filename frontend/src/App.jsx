@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import Start from "./pages/Start";
+ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
@@ -10,7 +11,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
         <Route path="/start" element={<Start/>} />
       </Routes>
     </Router>
