@@ -19,6 +19,13 @@ export default function Path() {
     }
   }, []);
 
+  useEffect(() => {
+    document.body.classList.add('lecture-path-page');
+    return () => {
+      document.body.classList.remove('lecture-path-page');
+    };
+  }, []);
+
   const navigate = useNavigate();
 
   const handleLectureClick = (id) => {

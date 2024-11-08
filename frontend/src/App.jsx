@@ -4,7 +4,7 @@ import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import Start from "./pages/Start";
 import Path from "./pages/Path";
-// import Lecture from "./pages/Lecture";
+import Lecture from "./pages/Lecture";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         />
         <Route path="/start" element={<Start />} />
         <Route path="/path" element={<Path />} />
-        {/* <Route path="/lecture/:id" element={<Lecture />} /> */}
+        <Route path="/lecture/:id" element={<Lecture />} />
       </Routes>
     </Router>
   );

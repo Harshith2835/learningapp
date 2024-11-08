@@ -1,14 +1,14 @@
 /* Scoped CSS for Lecture Path Page */
-.lecture-path-page body {
+.lecture-path-page {
   font-family: Arial, sans-serif;
-  background-image: url('/img/start-image.png');
+  background-image: url('/img/dashboard.png'); /* Check the path */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   margin: 0;
   padding: 0;
   color: #fff;
-}
+} 
 
 .lecture-path-page .path-title {
   position: absolute;
@@ -16,7 +16,7 @@
   left: 20px;
   font-size: 3rem;
   font-weight: bold;
-  color: #fff;
+  color: #eeff00;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -37,7 +37,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  background-color: #1976d2;
+  background-color: #d2a119;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -45,19 +45,19 @@
 }
 
 .lecture-path-page .lecture-button:disabled {
-  background-color: #c5c5c5;
+  background-color: #8B4513;
   cursor: not-allowed;
 }
 
 .lecture-path-page .progress-line {
   width: 120px;
   height: 4px;
-  background-color: #c5c5c5;
+  background-color: #8B4513;
   border-radius: 2px;
 }
 
 .lecture-path-page .progress-line.completed {
-  background-color: #1976d2;
+  background-color: #d2a119;
 }
 
 .lecture-path-page .drawer {
@@ -94,7 +94,7 @@
   padding: 12px;
   font-size: 1rem;
   color: white;
-  background-color: #1976d2;
+  background-color: #d2a119;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -104,9 +104,9 @@
 .lecture-path-page .drawer-close-button {
   margin-top: 8px;
   padding: 8px 16px;
-  color: #1976d2;
+  color: #d2a119;
   background-color: transparent;
-  border: 1px solid #1976d2;
+  border: 1px solid #d2a119;
   border-radius: 4px;
   cursor: pointer;
 }
