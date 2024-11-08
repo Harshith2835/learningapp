@@ -37,3 +37,31 @@ body{
   align-items: start;
   color: #FAB12F;
 }
+
+.header-buttons {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-buttons a {
+  text-decoration: none;
+}
+
+.choose-language-button,
+.logout-button {
+  background-color: transparent;
+  font-family: 'Press Start 2P',cursive, system-ui;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.choose-language-button:hover,
+.logout-button:hover {
+}

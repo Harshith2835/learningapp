@@ -35,27 +35,28 @@ export default function Path() {
       <Header />
       <h3 className="path-title">Learning {language}</h3>
 
-      <div className="lecture-buttons-container">
-        {languageLessons.map((lesson, index) => {
-          const isUnlocked = index === 0 || lesson.completed; // Beginner always unlocked
+        <div className="lecture-buttons-container">
+          {languageLessons.map((lesson, index) => {
+            // Beginner level is always unlocked; other levels check if the previous lesson was completed
+            const isUnlocked = index === 0 || languageLessons[index - 1].completed;
 
-          return (
-            <React.Fragment key={lesson.id}>
-              <button
-                className="lecture-button"
-                onClick={() => isUnlocked && handleDrawerOpen(lesson.title)}
-                disabled={!isUnlocked} // Disable button if the level is locked
-              >
-                {lesson.title}
-              </button>
+            return (
+              <React.Fragment key={lesson.id}>
+                <button
+                  className="lecture-button"
+                  onClick={() => isUnlocked && handleDrawerOpen(lesson.title)}
+                  disabled={!isUnlocked} // Disable button if the level is locked
+                >
+                  {lesson.title}
+                </button>
 
-              {index < languageLessons.length - 1 && (
-                <div className={`progress-line ${isUnlocked ? "completed" : ""}`}></div>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
+                {index < languageLessons.length - 1 && (
+                  <div className={`progress-line ${isUnlocked ? "completed" : ""}`}></div>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
 
       {open && (
         <div className="drawer">

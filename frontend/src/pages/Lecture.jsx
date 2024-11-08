@@ -1,15 +1,30 @@
 // src/components/LectureContent.jsx
-import React, { useState } from 'react';
-import parsedLectureContent from '../data/source.json';
+import React, { useState, useEffect } from 'react';
 import '../styles/lecture.css';
 import { useLocation } from 'react-router-dom';
 
 export default function LectureContent() {
-  const { level, content, questions } = parsedLectureContent;
+  const location = useLocation();
+  const { language, level } = location.state || {language:'English',level:'Beginner'};
+  const [content, setContent] = useState('');
+  const [questions, setQuestions] = useState([]);
   const [showQuestions, setShowQuestions] = useState(false);
 
-  const location = useLocation();
-  const { language } = location.state || { language: 'English' };  // default to 'English' if no language is passed
+  useEffect(() => {
+    // Fetch lesson content from backend
+    const fetchLessonContent = async () => {
+      try {
+        const response = await fetch(`/api/lessons/${language}/${level}`);
+        const data = await response.json();
+        setContent(data.content);
+        setQuestions(data.questions);
+      } catch (error) {
+        console.error('Error fetching lesson content:', error);
+      }
+    };
+
+    fetchLessonContent();
+  }, [language, level]);
 
   const handleStartGame = () => {
     setShowQuestions(true);
@@ -17,19 +32,16 @@ export default function LectureContent() {
 
   return (
     <div className="lecture-content">
-      {/* Display Topic and Level */}
       <header className="lecture-header">
         <h2>Topic: {language}</h2>
         <p>Level: {level}</p>
       </header>
 
-      {/* Display Content */}
       <section className="lecture-body">
         <h3>Introduction</h3>
         <p dangerouslySetInnerHTML={{ __html: content }} />
       </section>
 
-      {/* Start Game Button */}
       {!showQuestions && (
         <div className="start-game">
           <button onClick={handleStartGame} className="start-game-button">
@@ -38,7 +50,6 @@ export default function LectureContent() {
         </div>
       )}
 
-      {/* Display Questions if Start Game is clicked */}
       {showQuestions && (
         <section className="lecture-questions">
           <h3>Questions</h3>

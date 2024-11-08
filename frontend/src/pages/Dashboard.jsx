@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn = {true} />
       <h2 className="dashboard-title">Dashboard</h2>
       <div className="dashboard-container">
 

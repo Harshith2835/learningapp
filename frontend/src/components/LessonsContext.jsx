@@ -6,7 +6,7 @@ const LessonsContext = createContext();
 export const LessonsProvider = ({ children }) => {
   const initialLessonsData = {
     English: [
-      { id: 1, title: 'Beginner', completed: true },
+      { id: 1, title: 'Beginner', completed: false },
       { id: 2, title: 'Intermediate', completed: false },
       { id: 3, title: 'Advanced', completed: false },
     ],

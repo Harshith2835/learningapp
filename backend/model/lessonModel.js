@@ -28,7 +28,7 @@ const lessonSchema = new mongoose.Schema({
   level: {
     type: String,
     required: true,
-    enum: ['beginner', 'intermediate', 'advanced']
+    enum: ['Beginner', 'Intermediate', 'Advanced']
   },
   content: {
     type: String,

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loader from './Loader';
 import '../styles/language.css';
+import Navigation from '../components/Navigation';
 
 export default function Language() {
   const navigate = useNavigate();
@@ -30,15 +31,19 @@ export default function Language() {
   }
 
   return (
-    <div className="language-container">
-      <div className="blurred-box">
-        <p>Choose Your Language</p>
-        <div className="language-buttons">
-          <button onClick={() => handleLanguageSelection('English')}>English</button>
-          <button onClick={() => handleLanguageSelection('Telugu')}>Telugu</button>
-          <button onClick={() => handleLanguageSelection('Hindi')}>Hindi</button>
+    <>
+      <div className="language-container">
+        <div className="blurred-box">
+          <p>Choose Your Language</p>
+          <div className="language-buttons">
+            <button onClick={() => handleLanguageSelection('English')}>English</button>
+            <button onClick={() => handleLanguageSelection('Telugu')}>Telugu</button>
+            <button onClick={() => handleLanguageSelection('Hindi')}>Hindi</button>
+          </div>
         </div>
       </div>
-    </div>
+      <Navigation></Navigation>
+    </>
+
   );
 }

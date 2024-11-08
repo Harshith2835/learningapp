@@ -15,11 +15,14 @@ router.post("/generate", createLessons);
 router.get("/:topic/:level", async (req, res) => {
   try {
     const { topic, level } = req.params;
-    const lessons = await Lesson.find({ topic, level });
-    res.json(lessons);
+    const lesson = await Lesson.findOne({ topic, level }); // Adjusted to find one specific lesson
+    if (!lesson) {
+      return res.status(404).json({ message: "Lesson not found" });
+    }
+    res.json({ content: lesson.content, questions: lesson.questions });
   } catch (error) {
-    console.error("Error retrieving lessons:", error); // Log error details
-    res.status(500).json({ message: "Error retrieving lessons" });
+    console.error("Error retrieving lesson:", error);
+    res.status(500).json({ message: "Error retrieving lesson" });
   }
 });
 
