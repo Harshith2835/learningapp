@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/lecture.css';
 import { useLocation } from 'react-router-dom';
+import { formatContent } from '../formatcontent.jsx'; // Import the formatContent function
 
 export default function LectureContent() {
   const location = useLocation();
@@ -38,8 +39,7 @@ export default function LectureContent() {
       </header>
 
       <section className="lecture-body">
-        <h3>Introduction</h3>
-        <p dangerouslySetInnerHTML={{ __html: content }} />
+        {formatContent(content)}
       </section>
 
       {!showQuestions && (

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import "../styles/path.css";
-import { useLessons } from '../components/LessonsContext';
+import { useLessons } from '../context/LessonsContext';
 
 export default function Path() {
   const location = useLocation();

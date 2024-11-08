@@ -6,7 +6,7 @@ import Language from "./pages/Language";
 import Path from "./pages/Path";
 import Lecture from "./pages/Lecture";
 import Dashboard from "./pages/Dashboard";
-import { LessonsProvider } from './components/LessonsContext';
+import { LessonsProvider } from './context/LessonsContext';
 
 function App() {
   return (

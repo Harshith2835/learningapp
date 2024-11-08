@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Header from '../components/Header';
-import { useLessons } from '../components/LessonsContext';
+import { useLessons } from '../context/LessonsContext';
 
 export default function Dashboard() {
   const navigate = useNavigate();
