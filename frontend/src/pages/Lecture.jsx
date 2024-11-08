@@ -1,13 +1,17 @@
 // src/components/LectureContent.jsx
-import React, { useState, useEffect } from 'react';
-import '../styles/lecture.css';
-import { useLocation } from 'react-router-dom';
-import { formatContent } from '../formatcontent.jsx'; // Import the formatContent function
+import React, { useState, useEffect } from "react";
+import "../styles/lecture.css";
+import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import { formatContent } from "../formatcontent.jsx"; // Import the formatContent function
 
 export default function LectureContent() {
   const location = useLocation();
-  const { language, level } = location.state || {language:'English',level:'Beginner'};
-  const [content, setContent] = useState('');
+  const navigate = useNavigate(); // Initialize the navigate function
+  const { language, level } = location.state || {
+    language: "English",
+    level: "Beginner",
+  };
+  const [content, setContent] = useState("");
   const [questions, setQuestions] = useState([]);
   const [showQuestions, setShowQuestions] = useState(false);
 
@@ -20,7 +24,7 @@ export default function LectureContent() {
         setContent(data.content);
         setQuestions(data.questions);
       } catch (error) {
-        console.error('Error fetching lesson content:', error);
+        console.error("Error fetching lesson content:", error);
       }
     };
 
@@ -28,7 +32,8 @@ export default function LectureContent() {
   }, [language, level]);
 
   const handleStartGame = () => {
-    setShowQuestions(true);
+    // Navigate to the game page when "Start Game" is pressed
+    navigate("/game", { state: { language, level, questions } });
   };
 
   return (
@@ -38,9 +43,7 @@ export default function LectureContent() {
         <p>Level: {level}</p>
       </header>
 
-      <section className="lecture-body">
-        {formatContent(content)}
-      </section>
+      <section className="lecture-body">{formatContent(content)}</section>
 
       {!showQuestions && (
         <div className="start-game">

@@ -1,9 +1,22 @@
+.dashboard-section {
+  background-image: url('/img/language.webp'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Apply a semi-transparent background to make text stand out */
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .dashboard-container {
   display: flex;
   flex-wrap: wrap;  /* Ensures responsiveness if there are too many sections */
   justify-content: space-between;
   gap: 20px;
-  color: #FAB12F;
+  color: #f59b00;
 }
 
 .language-section {
@@ -14,6 +27,16 @@
 
 .lesson-item {
   margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);  /* Light border around the item */
+  border-radius: 8px;  /* Rounded corners */
+  background-color: rgba(255, 255, 255, 0.7); /* Translucent background */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+  transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.lesson-item:hover {
+  background-color: rgba(255, 255, 255, 0.9);  /* Slightly more opaque when hovered */
 }
 
 .lesson-title {
@@ -23,11 +46,11 @@
 
 .lesson-progress {
   font-size: 14px;
-  color: gray;
+  color: black;
 }
 
 .lesson-progress-bar-background {
-  background-color: #f0f0f0;
+  background-color: black;
   border-radius: 5px;
   height: 6px;
   width: 100%;
@@ -44,25 +67,8 @@
   margin-top: 20px;
 }
 
-.start-path-button {
-  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
-  margin-top: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.start-path-button:hover {
-  background-color: #0056b3;
-}
-
 .progress-bar-background {
-  background-color: #e0e0e0;
+  background-color: black;
   border-radius: 10px;
   height: 8px;
 }
@@ -71,4 +77,48 @@
   background-color: #007bff;
   height: 8px;
   border-radius: 10px;
+}
+
+/* Leaderboard Section Styling */
+.leaderboard-section {
+  width: 28%;  /* Adjust width to leave space for the language sections */
+  background-color: rgba(255, 255, 255, 0.7);  /* Translucent background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-section h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;  /* Highlighting the leaderboard title */
+  margin-bottom: 15px;
+}
+
+.leaderboard-item {
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.8);  /* Light translucent background */
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);  /* Light border */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+  display: flex;
+  justify-content: space-between;
+}
+
+.leaderboard-item:hover {
+  background-color: rgba(255, 255, 255, 0.9); /* Slight opacity change on hover */
+}
+
+.leaderboard-item .username {
+  font-weight: bold;
+  color: #333;
+}
+
+.leaderboard-item .score {
+  color: #007bff;
+}
+
+.leaderboard-list {
+  margin-top: 20px;
 }

@@ -8,56 +8,78 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { lessons } = useLessons();
 
+  const leaderboard = [
+    { rank: 1, username: 'EpicGamerX', score: 95 },
+    { rank: 2, username: 'ShadowNinja77', score: 90 },
+    { rank: 3, username: 'VortexMaster', score: 85 },
+    { rank: 4, username: 'NightWolfX', score: 80 },
+    { rank: 5, username: 'PixelWarrior', score: 75 },
+    { rank: 6, username: 'DragonSlayer99', score: 70 },
+    { rank: 7, username: 'AceSniper123', score: 65 },
+    { rank: 8, username: 'GhostRiderX', score: 60 },
+    { rank: 9, username: 'ThunderStrike', score: 55 },
+    { rank: 10, username: 'PhantomHunter', score: 50 }
+  ];
+
   const handlePathNavigation = (language) => {
     navigate('/path', { state: { language } });
   };
 
   return (
     <>
-      <Header isLoggedIn = {true} />
-      <h2 className="dashboard-title">Dashboard</h2>
-      <div className="dashboard-container">
+      <Header isLoggedIn={true} />
+      <div className='dashboard-section'>
+        <h2 className="dashboard-title">Dashboard</h2>
+        <div className="dashboard-container">
+          {/* Language Progress Sections */}
+          {Object.keys(lessons).map((language) => (
+            <div key={language} className="language-section">
+              <h3>{language}</h3>
 
-        {Object.keys(lessons).map((language) => (
-          <div key={language} className="language-section">
-            <h3>{language}</h3>
+              {/* Progress Bar for each language */}
+              <div className="progress-bar-background">
+                <div
+                  className="progress-bar"
+                  style={{ width: `${calculateProgressPercentage(lessons[language])}%` }}
+                ></div>
+              </div>
 
-            {/* Progress Bar for each language */}
-            <div className="progress-bar-background">
-              <div
-                className="progress-bar"
-                style={{ width: `${calculateProgressPercentage(lessons[language])}%` }}
-              ></div>
+              {/* Display individual lessons' progress */}
+              <div className="lessons-list">
+                {lessons[language].map((lesson, index) => (
+                  <div key={index} className="lesson-item">
+                    <div>
+                      <h4 className="lesson-title">{lesson.title}</h4>
+                      <p className="lesson-progress">
+                        {lesson.completed ? 'Completed' : 'Not Completed'}
+                      </p>
+                    </div>
+                    <div className="lesson-progress-bar-background">
+                      <div
+                        className="lesson-progress-bar"
+                        style={{ width: `${lesson.completed ? 100 : 0}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
             </div>
-
-            {/* Display individual lessons' progress */}
-            <div className="lessons-list">
-              {lessons[language].map((lesson, index) => (
-                <div key={index} className="lesson-item">
-                  <div>
-                    <h4 className="lesson-title">{lesson.title}</h4>
-                    <p className="lesson-progress">
-                      {lesson.completed ? 'Completed' : 'Not Completed'}
-                    </p>
-                  </div>
-                  <div className="lesson-progress-bar-background">
-                    <div
-                      className="lesson-progress-bar"
-                      style={{ width: `${lesson.completed ? 100 : 0}%` }}
-                    ></div>
-                  </div>
+          ))}
+          
+          {/* Leaderboard Section */}
+          <div className="leaderboard-section">
+            <h3>Leaderboard</h3>
+            <div className="leaderboard-list">
+              {leaderboard.map((player, index) => (
+                <div key={index} className="leaderboard-item">
+                  <span className="username">{player.rank}. {player.username}</span>
+                  <span className="score">{player.score}</span>
                 </div>
               ))}
             </div>
-            {/* Button to navigate to Path page for the selected language */}
-            <button
-              className="start-path-button"
-              onClick={() => handlePathNavigation(language)}
-            >
-              Go to Path
-            </button>
           </div>
-        ))}
+        </div>
       </div>
     </>
   );

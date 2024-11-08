@@ -6,6 +6,7 @@ import Language from "./pages/Language";
 import Path from "./pages/Path";
 import Lecture from "./pages/Lecture";
 import Dashboard from "./pages/Dashboard";
+import Game from "./pages/Game"
 import { LessonsProvider } from './context/LessonsContext';
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
           <Route path="/language" element={<Language/>} />
           <Route path="/path" element={<Path />} />
           <Route path="/lecture/:id" element={<Lecture />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/game" element={<Game />} />
           </Routes>
       </Router>
     </LessonsProvider>
