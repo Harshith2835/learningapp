@@ -14,14 +14,14 @@ function App() {
     <LessonsProvider>
         <Router>
           <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/start" element={<Start />} />
-          <Route path="/language" element={<Language/>} />
-          <Route path="/path" element={<Path />} />
-          <Route path="/lecture/:id" element={<Lecture />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/game" element={<Game />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/start" element={<Start />} />
+            <Route path="/language" element={<Language/>} />
+            <Route path="/path" element={<Path />} />
+            <Route path="/lecture/:id" element={<Lecture />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/game" element={<Game />} />
           </Routes>
       </Router>
     </LessonsProvider>
