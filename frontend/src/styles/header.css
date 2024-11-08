@@ -7,9 +7,7 @@
 body{
   margin: 0;
   padding: 0;
-  /* color: #ca6702; */
-  color: #cb1dcd;
-
+  color: #FAB12F;
   font-family: 'Press Start 2P', Raleway, Poppins, Arial;
   margin-bottom: 100px;
 }
@@ -21,7 +19,8 @@ body{
   border-style:solid;
   border-width: 0;
   border-bottom-width: 2px;
-  border-color: grey;
+  color: white;
+  border-color: #FAB12F;
   padding-left: 20px;
 }
 
@@ -30,9 +29,11 @@ body{
   padding-right: 15px;
   width: 40px;
   height: 40px;
+  color: white;
 }
 
-.web-title{
+.web-title-{
   justify-content: center;
   align-items: start;
+  color: #FAB12F;
 }

@@ -6,7 +6,7 @@ body {
   
   /* color : #31473A */
   /* color: #ca6702; */
-  color: #cb1dcd;
+  color: white;
 
 }
 
@@ -24,7 +24,7 @@ body {
   
   /* color : #31473A; */
   /* color: #ca6702; */
-  color: #cb1dcd;
+  color: white;
 
   text-align: center;
   padding: 20px;
@@ -41,7 +41,7 @@ body {
   
   /* color : #31473A; */
   /* color: #ca6702; */
-  color: #cb1dcd;
+  color: wheat;
 
   margin-top: 0;
   font-size: 2.5rem;
@@ -52,7 +52,7 @@ body {
   
   /* color : #31473A; */
   /* color: #ca6702; */
-  color: #cb1dcd;
+  color: wheat;
 
   margin: 16px 0 32px;
   font-size: 1.25rem;
@@ -67,7 +67,7 @@ body {
   
   /* color : #31473A; */
   /* color: #ca6702; */
-  color: #cb1dcd;
+  color: wheat;
 
   background-color: #1976d2;
   border: none;

@@ -16,7 +16,6 @@ export default function HomePage(){
           <Link to="/auth?mode=login">
             <button className='login-button'>Log in</button>
           </Link>
-          <p>or</p>
           <Link to="/auth?mode=signup">
             <button className='signup-button'>Sign up</button>
           </Link>      

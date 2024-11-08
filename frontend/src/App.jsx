@@ -5,6 +5,7 @@ import Start from "./pages/Start";
 import Language from "./pages/Language";
 import Path from "./pages/Path";
 import Lecture from "./pages/Lecture";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/language" element={<Language/>} />
         <Route path="/path" element={<Path />} />
         <Route path="/lecture/:id" element={<Lecture />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

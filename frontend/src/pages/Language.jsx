@@ -9,12 +9,14 @@ export default function Language() {
   };
 
   return (
-    <div className="language-container">
-      <p>Select Language</p>
-      <div className="language-buttons">
-        <button onClick={() => handleLanguageSelection('English')}>English</button>
-        <button onClick={() => handleLanguageSelection('Hindi')}>Hindi</button>
-        <button onClick={() => handleLanguageSelection('Telugu')}>Telugu</button>
+    <div class="language-container">
+      <div class="blurred-box">
+        <p>Choose Your Language</p>
+        <div class="language-buttons">
+          <button>English</button>
+          <button>Telugu</button>
+          <button>Hindi</button>
+        </div>
       </div>
     </div>
   );

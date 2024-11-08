@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import parsedLectureContent from '../data/parsedLectureContent.json';
 import Header from '../components/Header';
+import Navigation from '../components/Navigation'
 import '../styles/path.css';
 
 export default function Path() {
@@ -98,6 +99,7 @@ export default function Path() {
           </div>
         </div>
       )}
+      <Navigation></Navigation>
     </div>
   );
 }
