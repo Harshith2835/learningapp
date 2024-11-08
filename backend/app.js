@@ -5,6 +5,7 @@ import connectdb from './config/dbconfig.js';
 import userRoutes from './routes/userRoutes.js';
 import lessonRoutes from './routes/lessonRoutes.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors'
 
 dotenv.config();
 connectdb();
@@ -12,6 +13,7 @@ connectdb();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors())
 app.get("/",(req,res)=>{
     res.send("helloworld")
 })

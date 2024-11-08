@@ -1,53 +1,70 @@
-import React, { useState } from 'react';
-import '../styles/dashboard.css'; 
-import Header from '../components/Header'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/dashboard.css';
+import Header from '../components/Header';
+import { useLessons } from '../components/LessonsContext';
 
-const lessonsData = [
-  { id: 1, title: 'Lesson 1: Basics', completed: 20 },
-  { id: 2, title: 'Lesson 2: Grammar', completed: 80 },
-  { id: 3, title: 'Lesson 3: Vocabulary', completed: 40 },
-  { id: 4, title: 'Lesson 4: Pronunciation', completed: 100 },
-  { id: 5, title: 'Lesson 5: Writing', completed: 60 }
-];
+export default function Dashboard() {
+  const navigate = useNavigate();
+  const { lessons } = useLessons();
 
-export default function Dashboard () {
-
-  const [lessons, setLessons] = useState(lessonsData);
-
-  const totalProgress = lessons.reduce((acc, lesson) => acc + lesson.completed, 0);
-  const progressPercentage = totalProgress / lessons.length;
+  const handlePathNavigation = (language) => {
+    navigate('/path', { state: { language } });
+  };
 
   return (
-    <>    
-      <Header></Header>
+    <>
+      <Header />
+      <h2 className="dashboard-title">Dashboard</h2>
       <div className="dashboard-container">
-          {/* Progress Bar */}
-          <div className="progress-bar-background">
-            <div className="progress-bar" style={{ width: `${progressPercentage}%` }}></div>
-          </div>
 
-          {/* Dashboard Content */}
-          <div className="dashboard-content">
-            <h2 className="dashboard-title">Dashboard</h2>
+        {Object.keys(lessons).map((language) => (
+          <div key={language} className="language-section">
+            <h3>{language}</h3>
+
+            {/* Progress Bar for each language */}
+            <div className="progress-bar-background">
+              <div
+                className="progress-bar"
+                style={{ width: `${calculateProgressPercentage(lessons[language])}%` }}
+              ></div>
+            </div>
+
+            {/* Display individual lessons' progress */}
             <div className="lessons-list">
-              {lessons.map((lesson) => (
-                <div key={lesson.id} className="lesson-item">
+              {lessons[language].map((lesson, index) => (
+                <div key={index} className="lesson-item">
                   <div>
-                    <h3 className="lesson-title">{lesson.title}</h3>
-                    <p className="lesson-progress">Progress: {lesson.completed}%</p>
+                    <h4 className="lesson-title">{lesson.title}</h4>
+                    <p className="lesson-progress">
+                      {lesson.completed ? 'Completed' : 'Not Completed'}
+                    </p>
                   </div>
                   <div className="lesson-progress-bar-background">
                     <div
                       className="lesson-progress-bar"
-                      style={{ width: `${lesson.completed}%` }}
+                      style={{ width: `${lesson.completed ? 100 : 0}%` }}
                     ></div>
                   </div>
                 </div>
               ))}
             </div>
+            {/* Button to navigate to Path page for the selected language */}
+            <button
+              className="start-path-button"
+              onClick={() => handlePathNavigation(language)}
+            >
+              Go to Path
+            </button>
           </div>
-        </div>
+        ))}
+      </div>
     </>
-
   );
-};
+}
+
+// Utility function to calculate progress percentage
+function calculateProgressPercentage(lessons) {
+  const totalProgress = lessons.reduce((acc, lesson) => acc + (lesson.completed ? 1 : 0), 0);
+  return (totalProgress / lessons.length) * 100;
+}

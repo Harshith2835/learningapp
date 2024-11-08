@@ -4,7 +4,6 @@ import parsedLectureContent from '../data/source.json';
 import '../styles/lecture.css';
 import { useLocation } from 'react-router-dom';
 
-
 export default function LectureContent() {
   const { level, content, questions } = parsedLectureContent;
   const [showQuestions, setShowQuestions] = useState(false);

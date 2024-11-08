@@ -6,20 +6,24 @@ import Language from "./pages/Language";
 import Path from "./pages/Path";
 import Lecture from "./pages/Lecture";
 import Dashboard from "./pages/Dashboard";
+import { LessonsProvider } from './components/LessonsContext';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/start" element={<Start />} />
-        <Route path="/language" element={<Language/>} />
-        <Route path="/path" element={<Path />} />
-        <Route path="/lecture/:id" element={<Lecture />} />
-        <Route path="dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <LessonsProvider>
+        <Router>
+          <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/start" element={<Start />} />
+          <Route path="/language" element={<Language/>} />
+          <Route path="/path" element={<Path />} />
+          <Route path="/lecture/:id" element={<Lecture />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          </Routes>
+      </Router>
+    </LessonsProvider>
+
   );
 }
 
