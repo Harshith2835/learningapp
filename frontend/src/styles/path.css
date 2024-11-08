@@ -1,7 +1,6 @@
 /* Scoped CSS for Lecture Path Page */
-.lecture-path-page body {
-  font-family: Arial, sans-serif;
-  background-image: url('/img/start-image.png');
+.lecture-path-page {
+  background-image: url('/img/dashboard.png'); /* Check the path */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -13,7 +12,7 @@
 .lecture-path-page .path-title {
   position: absolute;
   top: 60px;
-  left: 20px;
+  left: 30px;
   font-size: 3rem;
   font-weight: bold;
   color: #fff;

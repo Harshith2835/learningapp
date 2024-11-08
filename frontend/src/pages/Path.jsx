@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import parsedLectureContent from '../data/parsedLectureContent.json';
 import Header from '../components/Header';
 import '../styles/path.css';
 
 export default function Path() {
+
+  const location = useLocation();
+  const language = location.state?.language || 'English'; // default to English if no language is selected
+
   const [unlockedLectures, setUnlockedLectures] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedLecture, setSelectedLecture] = useState(null);
@@ -46,8 +51,8 @@ export default function Path() {
 
   return (
     <div className='lecture-path-page'>
-            <Header />
-      <h3 className="path-title">Learning Path</h3>
+      <Header />
+      <h3 className="path-title">Learning {language}</h3>
 
       <div className="lecture-buttons-container">
         {parsedLectureContent.lectures.map((lecture, index) => (

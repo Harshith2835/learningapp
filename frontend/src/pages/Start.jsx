@@ -7,7 +7,7 @@ export default function Start() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/path');
+    navigate('/language');
   };
 
   return (
