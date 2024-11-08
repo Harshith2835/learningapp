@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 import parsedLectureContent from '../data/parsedLectureContent.json';
 import Header from '../components/Header';
 import '../styles/path.css';
@@ -35,7 +34,7 @@ export default function Path() {
 
   const handleLectureClick = (id) => {
     if (id <= unlockedLectures) {
-      navigate(`/lecture/${id}`);
+      navigate(`/lecture/${id}`, { state: { language } });
     }
   };
 
@@ -47,6 +46,19 @@ export default function Path() {
   const handleDrawerClose = () => {
     setOpen(false);
     setSelectedLecture(null);
+  };
+
+  const getButtonText = (level) => {
+    switch (level) {
+      case 'beginner':
+        return 'Beginner';
+      case 'intermediary':
+        return 'Intermediate';
+      case 'expert':
+        return 'Expert';
+      default:
+        return 'Unknown';
+    }
   };
 
   return (
@@ -66,7 +78,7 @@ export default function Path() {
                 }
               }}
             >
-              {index + 1}
+              {getButtonText(lecture.level)}
             </button>
 
             {/* Render progress bar between buttons */}
@@ -97,8 +109,6 @@ export default function Path() {
           </div>
         </div>
       )}
-
-      <Navigation />
     </div>
   );
-}       
+}

@@ -2,10 +2,15 @@
 import React, { useState } from 'react';
 import parsedLectureContent from '../data/source.json';
 import '../styles/lecture.css';
+import { useLocation } from 'react-router-dom';
+
 
 export default function LectureContent() {
-  const { topic, level, content, questions } = parsedLectureContent;
+  const { level, content, questions } = parsedLectureContent;
   const [showQuestions, setShowQuestions] = useState(false);
+
+  const location = useLocation();
+  const { language } = location.state || { language: 'English' };  // default to 'English' if no language is passed
 
   const handleStartGame = () => {
     setShowQuestions(true);
@@ -15,7 +20,7 @@ export default function LectureContent() {
     <div className="lecture-content">
       {/* Display Topic and Level */}
       <header className="lecture-header">
-        <h2>{topic}</h2>
+        <h2>Topic: {language}</h2>
         <p>Level: {level}</p>
       </header>
 

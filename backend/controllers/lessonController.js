@@ -8,7 +8,7 @@ const lessonLevels = ['beginner', 'intermediate', 'advanced'];
 const generateLessonContent = async (topic, level) => {
   const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
   
-  const prompt = `Generate a ${level} level lesson on ${topic} related to human communication language. 
+  const prompt = `Generate a ${level} level lesson on language ${topic} so that the user can learn from the response you give. 
     Include clear, engaging information appropriate for the ${level} level.
     The content should be well-structured and educational.`;
 

@@ -1,7 +1,14 @@
-/* Centered title styling */
-.lecture-title {
-  font-size: 2rem;
-  font-weight: bold;
+.lecture-content {
+  padding: 20px;
+  color: #fff;
+  background-image: url('/img/dashboard.png'); /* Path to your image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -19,13 +26,13 @@
   max-width: 800px;
 }
 
-/* Start Quiz button styling */
-.start-quiz-button {
-  display: block;
-  margin: 2rem auto;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
+.start-game {
+  margin-top: 20px;
+}
+
+.start-game-button {
+  font-size: 1.1rem;
+  padding: 10px 20px;
   color: #fff;
   background-color: #d2a119; /* mustard color */
   border: none;
