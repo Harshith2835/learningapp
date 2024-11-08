@@ -1,7 +1,13 @@
 /* Apply the background image to the entire page */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  /* background-color: #338de6;  */
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
+  
+  /* color : #31473A */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
 }
 
 .start-container {
@@ -14,7 +20,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;                /* Set text color to white for readability */
+  /* color: white;                Set text color to white for readability */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
   text-align: center;
   padding: 20px;
 }
@@ -27,21 +38,37 @@ body {
 }
 
 .start-title {
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
   margin-top: 0;
   font-size: 2.5rem;
   font-weight: bold;
 }
 
 .start-subtitle {
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
   margin: 16px 0 32px;
   font-size: 1.25rem;
 }
 
 .get-started-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
-  color: white;
+  /* color: white; */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
   background-color: #1976d2;
   border: none;
   border-radius: 4px;

@@ -1,7 +1,26 @@
+.press-start-2p-regular {
+  font-family: 'Press Start 2P',cursive, system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+  
+  /* color : #31473A; */
+  color: #cb1dcd;
+  /* background-color: #2b2c28; */
+  margin: 0;
+  padding: 0;
+  /* jkbuib */
+  /* background-color: #338de6;  */
+  font-family: 'Press Start 2P', Raleway, Poppins, Arial;
+  margin-bottom: 100px;
+}
+
 .homepage-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 50px;
+  gap: 10px;
   margin: 60px auto 0;
   padding: 0 20px; 
   max-width: 900px;
@@ -15,6 +34,11 @@
 }
 
 .login-section {
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,24 +46,41 @@
   text-align: center;
   padding: 2rem;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  background-color: #2b2c28;
+
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .login-section h3 {
   font-size: 24px;
   font-weight: bold;
-  color: #111418;
+  /* color: #111418; */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+  background-color: #2b2c28;
+
+
   margin-bottom: 0.5rem;
 }
 
 .login-section p {
   font-size: 16px;
-  color: #111418;
+  /* color: #111418; */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+  background-color: #2b2c28;
+
+
   margin: 0.5rem 0;
 }
 
 .login-section button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   width: 100px;
   padding: 10px;
   margin: 0.5rem 0;
@@ -50,11 +91,13 @@
 }
 
 .login-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   background-color: #338de6;
   color: white;
 }
 
 .signup-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   background-color: #f0f2f4;
   color: #111418;
 }

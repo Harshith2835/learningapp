@@ -1,6 +1,25 @@
+.press-start-2p-regular {
+  font-family: 'Press Start 2P',cursive ,  system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body{
   margin: 0;
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
+  /* omowm */
+  background-color: #001219; 
   padding: 0;
-  font-family: Raleway, Poppins, Arial;
+  font-family: 'Press Start 2P',cursive ,  Raleway, Poppins, Arial;
   margin-bottom: 100px;
 }
+
+/* .press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+} */

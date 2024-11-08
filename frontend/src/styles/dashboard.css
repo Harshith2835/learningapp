@@ -1,6 +1,19 @@
 /* Dashboard Container */
+.press-start-2p-regular {
+  font-family: 'Press Start 2P',cursive, system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', Raleway, Poppins, Arial;
+  margin-bottom: 100px;
+}
+
 .dashboard-container {
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
   min-height: 100vh;
   background-color: #f0f0f0;
   padding: 20px;

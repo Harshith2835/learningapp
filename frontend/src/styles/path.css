@@ -1,14 +1,14 @@
 /* Scoped CSS for Lecture Path Page */
-.lecture-path-page {
+.lecture-path-page body {
   font-family: Arial, sans-serif;
-  background-image: url('/img/dashboard.png'); /* Check the path */
+  background-image: url('/img/start-image.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   margin: 0;
   padding: 0;
   color: #fff;
-} 
+}
 
 .lecture-path-page .path-title {
   position: absolute;
@@ -16,11 +16,12 @@
   left: 20px;
   font-size: 3rem;
   font-weight: bold;
-  color: #eeff00;
+  color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .lecture-path-page .lecture-buttons-container {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,16 +29,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: #cb1dcd;
+
 }
 
 .lecture-path-page .lecture-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   width: 80px;
   height: 80px;
   margin: 0 40px;
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  background-color: #d2a119;
+  background-color: #1976d2;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -89,6 +96,7 @@
 }
 
 .lecture-path-page .start-lecture-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   width: 100%;
   max-width: calc(100% - 64px);
   padding: 12px;
@@ -102,6 +110,7 @@
 }
 
 .lecture-path-page .drawer-close-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
   margin-top: 8px;
   padding: 8px 16px;
   color: #d2a119;
