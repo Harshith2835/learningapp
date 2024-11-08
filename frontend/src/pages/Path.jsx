@@ -48,18 +48,7 @@ export default function Path() {
     setSelectedLecture(null);
   };
 
-  const getButtonText = (level) => {
-    switch (level) {
-      case 'beginner':
-        return 'Beginner';
-      case 'intermediary':
-        return 'Intermediate';
-      case 'expert':
-        return 'Expert';
-      default:
-        return 'Unknown';
-    }
-  };
+  const levels = ['Beginner', 'Intermediate', 'Expert'];
 
   return (
     <div className='lecture-path-page'>
@@ -67,29 +56,29 @@ export default function Path() {
       <h3 className="path-title">Learning {language}</h3>
 
       <div className="lecture-buttons-container">
-        {parsedLectureContent.lectures.map((lecture, index) => (
-          <React.Fragment key={index}>
-            <button
-              className="lecture-button"
-              disabled={index + 1 > unlockedLectures}
-              onClick={() => {
-                if (index + 1 <= unlockedLectures) {
-                  handleDrawerOpen(lecture);
-                }
-              }}
-            >
-              {getButtonText(lecture.level)}
-            </button>
+          {parsedLectureContent.lectures.map((lecture, index) => (
+            <React.Fragment key={index}>
+              <button
+                className="lecture-button"
+                disabled={index + 1 > unlockedLectures}
+                onClick={() => {
+                  if (index + 1 <= unlockedLectures) {
+                    handleDrawerOpen(lecture);
+                  }
+                }}
+              >
+                {levels[index] || 'Unknown Level'} {/* Render level based on index */}
+              </button>
 
-            {/* Render progress bar between buttons */}
-            {index < parsedLectureContent.lectures.length - 1 && (
-              <div
-                className={`progress-line ${index < unlockedLectures - 1 ? 'completed' : ''}`}
-              ></div>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
+              {/* Render progress bar between buttons */}
+              {index < parsedLectureContent.lectures.length - 1 && (
+                <div
+                  className={`progress-line ${index < unlockedLectures - 1 ? 'completed' : ''}`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
 
       {open && (
         <div className="drawer">
