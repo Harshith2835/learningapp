@@ -9,16 +9,16 @@ export default function Dashboard() {
   const { lessons } = useLessons();
 
   const leaderboard = [
-    { rank: 1, username: 'EpicGamerX', score: 95 },
-    { rank: 2, username: 'ShadowNinja77', score: 90 },
-    { rank: 3, username: 'VortexMaster', score: 85 },
-    { rank: 4, username: 'NightWolfX', score: 80 },
-    { rank: 5, username: 'PixelWarrior', score: 75 },
-    { rank: 6, username: 'DragonSlayer99', score: 70 },
-    { rank: 7, username: 'AceSniper123', score: 65 },
-    { rank: 8, username: 'GhostRiderX', score: 60 },
-    { rank: 9, username: 'ThunderStrike', score: 55 },
-    { rank: 10, username: 'PhantomHunter', score: 50 }
+    { rank: 1, username: 'Harsh', score: 95 },
+    { rank: 2, username: 'Kumar', score: 90 },
+    { rank: 3, username: 'Vinay', score: 85 },
+    { rank: 4, username: 'Nilay', score: 80 },
+    { rank: 5, username: 'Parth', score: 75 },
+    { rank: 6, username: 'Deepak', score: 70 },
+    { rank: 7, username: 'Aakash', score: 65 },
+    { rank: 8, username: 'Guna', score: 60 },
+    { rank: 9, username: 'Tarak', score: 55 },
+    { rank: 10, username: 'Binod', score: 50 }
   ];
 
   const handlePathNavigation = (language) => {

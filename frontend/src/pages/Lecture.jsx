@@ -40,6 +40,10 @@ export default function LectureContent() {
     setIsModalVisible(!isModalVisible); // Toggle the modal visibility
   };
 
+  const handleBack = () => {
+    navigate("/path"); // Navigate back to the specified path
+  };
+
   return (
     <div className="lecture-content">
       <header className="lecture-header">
@@ -48,6 +52,14 @@ export default function LectureContent() {
       </header>
 
       <section className="lecture-body">{formatContent(content)}</section>
+      
+      {/* Back button */}
+      <div className="start-game">
+        <button onClick={handleBack} className="start-game-button">
+          Back
+        </button>
+      </div>
+
       <div className="start-game">
         <button onClick={toggleModal} className="start-game-button">
           Game Instructions
