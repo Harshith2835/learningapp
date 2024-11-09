@@ -50,7 +50,7 @@ export default function Game() {
     let player;
     let animationFrameId;
     const PROJECTILE_SPEED = 10;
-    const SPEED = 8;
+    const SPEED = 4;
     const ROTATIONAL_SPEED = 0.2;
 
     const feedbackElement = document.getElementById("feedback");
@@ -221,7 +221,7 @@ export default function Game() {
       if (currentQuestionIndex >= gameQuestions.length) {
         showFeedback(`Game Over! Your final score is ${score}`, "yellow");
         checkScore();
-        setTimeout(() => navigate("/path"), 5000);
+        setTimeout(() => navigate("/path",{state:{language}}), 5000);
       } else {
         spawnAsteroids();
         displayQuestion();

@@ -41,7 +41,7 @@ export default function LectureContent() {
   };
 
   const handleBack = () => {
-    navigate("/path"); // Navigate back to the specified path
+    navigate("/path",{state:{language}}); // Navigate back to the specified path
   };
 
   return (
