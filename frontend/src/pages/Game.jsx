@@ -23,10 +23,8 @@ export default function Game() {
 
   useEffect(() => {
     const questions = location.state?.questions;
-    console.log(questions);
     
     if (!questions || !Array.isArray(questions) || questions.length === 0) {
-      alert("No questions available. Redirecting to home page.");
       navigate("/path");
       return;
     }
@@ -40,6 +38,8 @@ export default function Game() {
     const canvas = document.querySelector("canvas");
     const c = canvas.getContext("2d");
 
+    c.globalCompositeOperation = 'source-over';
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -49,9 +49,22 @@ export default function Game() {
     let asteroids = [];
     let player;
     let animationFrameId;
-    const PROJECTILE_SPEED = 5;
-    const SPEED = 2.5;
-    const ROTATIONAL_SPEED = 0.1;
+    const PROJECTILE_SPEED = 10;
+    const SPEED = 8;
+    const ROTATIONAL_SPEED = 0.2;
+
+    const feedbackElement = document.getElementById("feedback");
+    const gameOverElement = document.getElementById("game-over");
+
+    function showFeedback(text, color) {
+      feedbackElement.textContent = text;
+      feedbackElement.style.color = color;
+      feedbackElement.style.opacity = 1;
+
+      setTimeout(() => {
+        feedbackElement.style.opacity = 0;
+      }, 5000);
+    }
 
     class Player {
       constructor(position) {
@@ -159,11 +172,9 @@ export default function Game() {
     }
 
     function spawnAsteroids() {
-      asteroids = [];
       asteroids.length = 0;
 
-      const optionsi = gameQuestions[currentQuestionIndex].options;
-      console.log("in astroids",optionsi); 
+      const options = gameQuestions[currentQuestionIndex]?.options || [];
       const positions = [
         { x: canvas.width * 0.2, y: canvas.height * 0.2 },
         { x: canvas.width * 0.8, y: canvas.height * 0.2 },
@@ -171,15 +182,12 @@ export default function Game() {
         { x: canvas.width * 0.8, y: canvas.height * 0.8 },
       ];
 
-      optionsi.forEach((option, i) => {
+      options.forEach((option, i) => {
         const position = positions[i];
-        console.log(position);
         const vx = (Math.random() - 0.5) * SPEED;
         const vy = (Math.random() - 0.5) * SPEED;
         asteroids.push(new Asteroid(position, { x: vx, y: vy }, option));
-        console.log("hi",option,i,asteroids); 
       });
-      console.log(asteroids);
     }
 
     function displayQuestion() {
@@ -191,10 +199,13 @@ export default function Game() {
     }
 
     function checkScore() {
-      if (score >= 200 && !lessonUpdated) {
+      if (score >= 300 && !lessonUpdated) {
         setLessonUpdated(true);
         updateLessonCompletion(language, lessonId, true);
-        alert(`Congratulations! You've completed the ${level} level!`);
+        showFeedback(`Congratulations! You've completed the ${level} level!`, "yellow");
+      }
+      else{
+        showFeedback(`Sorry! You've not reached enough score to go to next level.`, "yellow");
       }
     }
 
@@ -208,9 +219,9 @@ export default function Game() {
     function nextQuestion() {
       currentQuestionIndex++;
       if (currentQuestionIndex >= gameQuestions.length) {
-        alert(`Game Over! Your final score is ${score}`);
+        showFeedback(`Game Over! Your final score is ${score}`, "yellow");
         checkScore();
-        navigate("/path");
+        setTimeout(() => navigate("/path"), 5000);
       } else {
         spawnAsteroids();
         displayQuestion();
@@ -221,9 +232,9 @@ export default function Game() {
       const correctAnswer = gameQuestions[currentQuestionIndex].correctAnswer;
       if (option === correctAnswer) {
         score += 100;
-        alert("Correct!");
+        showFeedback("Correct Answer!", "green");
       } else {
-        alert("Wrong Answer!");
+        showFeedback("Wrong Answer!", "red");
       }
       updateScoreDisplay();
       nextQuestion();
@@ -248,27 +259,11 @@ export default function Game() {
 
     function animate() {
       animationFrameId = requestAnimationFrame(animate);
-      c.fillStyle = 'rgba(0, 0, 0, 0.2)';
-      c.fillRect(0, 0, canvas.width, canvas.height);
-
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      
       player.update();
-
-      projectiles.forEach((projectile, index) => {
-        projectile.update();
-
-        if (
-          projectile.position.x < 0 ||
-          projectile.position.x > canvas.width ||
-          projectile.position.y < 0 ||
-          projectile.position.y > canvas.height
-        ) {
-          projectiles.splice(index, 1);
-        }
-      });
-
-      asteroids.forEach((asteroid) => {
-        asteroid.update();
-      });
+      projectiles.forEach((projectile, index) => projectile.update());
+      asteroids.forEach((asteroid) => asteroid.update());
 
       checkCollisions();
     }
@@ -291,33 +286,23 @@ export default function Game() {
             x: Math.cos(player.rotation) * PROJECTILE_SPEED,
             y: Math.sin(player.rotation) * PROJECTILE_SPEED,
           };
-          const bulletStartPos = {
-            x: player.position.x + Math.cos(player.rotation) * 50,
-            y: player.position.y + Math.sin(player.rotation) * 50,
-          };
-          projectiles.push(new Projectile(bulletStartPos, velocity));
+          projectiles.push(new Projectile(player.position, velocity));
           break;
       }
     }
 
     function init() {
-      player = new Player({
-        x: canvas.width / 2,
-        y: canvas.height / 2,
-      });
-
+      player = new Player({ x: canvas.width / 2, y: canvas.height / 2 });
       displayQuestion();
       updateScoreDisplay();
       spawnAsteroids();
       animate();
-
       window.addEventListener("keydown", handleKeyDown);
     }
 
     init();
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
@@ -327,7 +312,6 @@ export default function Game() {
   if (!gameQuestions) {
     return <div className="loading">Loading...</div>;
   }
-
   return (
     <div className="game-container">
       <div id="question">Question will appear here</div>
@@ -335,57 +319,69 @@ export default function Game() {
       <div id="feedback"></div>
       <div id="game-over"></div>
       <canvas></canvas>
-      <style jsx="true" >{`
-          .body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Press Start 2P', sans-serif; 
-            color: white;
-            text-align: center;
-            background-image: url('/img/space.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-          }
-          .canvas {
-            background-color: black;
-          }
-          #question {
-            position: absolute;
-            top: 40px;
-            width: 100%;
-            font-size: 40px;
-            color: white;
-          }
-          #score {
-            position: absolute;
-            top: 120px;
-            width: 100%;
-            font-size: 30px;
-            color: yellow;
-          }
-          #feedback {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            font-size: 24px;
-            color: red;
-            opacity: 0;
-            transition: opacity 0.5s;
-          }
-          #game-over {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 36px;
-            color: red;
-            display: none;
-          }
-      `}
-      </style>
-
+      <style jsx="true">{`
+        .game-container {
+          width: 100vw;
+          height: 100vh;
+          position: relative;
+          background-image: url('/img/space.jpg');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+        }
+        canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          z-index: 1;
+        }
+        body {
+          margin: 0;
+          overflow: hidden;
+          font-family: 'Press Start 2P', sans-serif;
+          color: white;
+          text-align: center;
+        }
+        #question {
+          position: absolute;
+          top: 40px;
+          width: 100%;
+          font-size: 40px;
+          color: white;
+          z-index: 2;
+        }
+        #score {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          font-size: 30px;
+          color: yellow;
+          z-index: 2;
+        }
+        #feedback {
+          position: absolute;
+          bottom: 50px;
+          width: 100%;
+          font-size: 24px;
+          color: red;
+          opacity: 0;
+          transition: opacity 0.5s;
+          z-index: 2;
+        }
+        #game-over {
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 36px;
+          color: yellow;
+          display: none;
+          z-index: 2;
+        }
+      `}</style>
     </div>
-    
   );
 }
