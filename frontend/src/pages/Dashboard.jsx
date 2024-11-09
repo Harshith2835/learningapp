@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Header from '../components/Header';
@@ -7,18 +7,26 @@ import { useLessons } from '../context/LessonsContext';
 export default function Dashboard() {
   const navigate = useNavigate();
   const { lessons } = useLessons();
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const username = userInfo ? userInfo.username : 'Guest';
+    if (username) {
+      setUsername(username);
+    } else {
+      navigate('/auth');
+    }
+  }, [navigate]);
 
   const leaderboard = [
-    { rank: 1, username: 'Harsh', score: 95 },
-    { rank: 2, username: 'Kumar', score: 90 },
-    { rank: 3, username: 'Vinay', score: 85 },
-    { rank: 4, username: 'Nilay', score: 80 },
-    { rank: 5, username: 'Parth', score: 75 },
-    { rank: 6, username: 'Deepak', score: 70 },
-    { rank: 7, username: 'Aakash', score: 65 },
-    { rank: 8, username: 'Guna', score: 60 },
-    { rank: 9, username: 'Tarak', score: 55 },
-    { rank: 10, username: 'Binod', score: 50 }
+    { rank: 1, username: 'Harsh', score: 1100 },
+    { rank: 2, username: 'Kumar', score: 100 },
+    { rank: 3, username: 'Vinay', score: 900 },
+    { rank: 4, username: 'Nilay', score: 800 },
+    { rank: 5, username: 'Parth', score: 700 },
+    { rank: 6, username: 'Deepak', score: 600 },
+    { rank: 7, username: 'Aakash', score: 500 },
   ];
 
   const handlePathNavigation = (language) => {
@@ -29,7 +37,7 @@ export default function Dashboard() {
     <>
       <Header isLoggedIn={true} />
       <div className='dashboard-section'>
-        <h2 className="dashboard-title">Dashboard</h2>
+        <h2 className="dashboard-title">Welcome, {username}!</h2> {/* Display username */}
         <div className="dashboard-container">
           {/* Language Progress Sections */}
           {Object.keys(lessons).map((language) => (
@@ -63,7 +71,6 @@ export default function Dashboard() {
                   </div>
                 ))}
               </div>
-
             </div>
           ))}
           

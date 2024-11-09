@@ -40,10 +40,14 @@ export const AuthProvider = ({ children }) => {
       await axios.post('/api/users/logout');
       setUser(null);
       localStorage.removeItem('userInfo');
+      window.location.reload();
     } catch (error) {
       console.error('Logout error:', error);
     }
   };
+  
+  
+  
 
   return (
     <AuthContext.Provider value={{ user, login, signup, logout, loading }}>
