@@ -15,7 +15,7 @@ export default function Header({ isLoggedIn }) {
           <Link to="/language">
             <button className="choose-language-button">Choose Language</button>
           </Link>
-          <Link to="/auth">
+          <Link to="/">
             <button className="logout-button">Logout</button>
           </Link>
         </div>
