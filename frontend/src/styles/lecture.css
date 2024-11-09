@@ -1,3 +1,4 @@
+/* Main container styling */
 .lecture-content {
   padding: 20px;
   color: #fff;
@@ -10,37 +11,83 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  animation: fadeIn 1s ease;
 }
 
+/* Header styling with fade-in effect */
 .lecture-header {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
+  width: 80%;
+  max-width: 700px;
+  animation: slideIn 0.7s ease;
+  transition: transform 0.3s ease;
 }
 
+/* Body section styling with shadow and smooth scale effect */
 .lecture-body {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  width: 80%;
   max-width: 800px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s;
 }
 
-.start-game {
-  margin-top: 20px;
+.lecture-body:hover {
+  transform: scale(1.02);
 }
 
+/* Start Game button with hover effect */
 .start-game-button {
-  font-size: 1.1rem;
-  padding: 10px 20px;
+  font-size: 1.2rem;
+  padding: 12px 25px;
   color: #fff;
-  background-color: #d2a119; /* mustard color */
+  background-color: #d2a119;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .start-game-button:hover {
-  background-color: #b58f10; /* darker mustard */
+  background-color: #b58f10;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Questions section */
+.lecture-questions {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  margin-top: 20px;
+  animation: fadeIn 1s ease;
+}
+
+.question-item {
+  margin-bottom: 15px;
+  animation: slideIn 0.5s ease;
+}
+
+.options label {
+  display: block;
+  padding: 5px 0;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }

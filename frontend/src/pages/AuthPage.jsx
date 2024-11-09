@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/authpage.css';
 
@@ -7,7 +7,7 @@ export default function AuthPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const initialMode = searchParams.get('mode') === 'signup' ? false : true;
-  
+
   const [isLogin, setIsLogin] = useState(initialMode);
   const [formData, setFormData] = useState({
     username: '',
@@ -41,10 +41,7 @@ export default function AuthPage() {
         password: formData.password
       });
 
-      // Store user data in localStorage
       localStorage.setItem('userInfo', JSON.stringify(data.user));
-      
-      // Redirect to dashboard
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred during login');
@@ -65,10 +62,7 @@ export default function AuthPage() {
         password: formData.password
       });
 
-      // Store user data in localStorage
       localStorage.setItem('userInfo', JSON.stringify(data.user));
-      
-      // Redirect to dashboard
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred during registration');

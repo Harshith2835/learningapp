@@ -23,6 +23,7 @@ export default function Game() {
 
   useEffect(() => {
     const questions = location.state?.questions;
+    console.log(questions);
     
     if (!questions || !Array.isArray(questions) || questions.length === 0) {
       alert("No questions available. Redirecting to home page.");
@@ -158,9 +159,11 @@ export default function Game() {
     }
 
     function spawnAsteroids() {
+      asteroids = [];
       asteroids.length = 0;
 
-      const options = gameQuestions[currentQuestionIndex].options;
+      const optionsi = gameQuestions[currentQuestionIndex].options;
+      console.log("in astroids",optionsi); 
       const positions = [
         { x: canvas.width * 0.2, y: canvas.height * 0.2 },
         { x: canvas.width * 0.8, y: canvas.height * 0.2 },
@@ -168,12 +171,15 @@ export default function Game() {
         { x: canvas.width * 0.8, y: canvas.height * 0.8 },
       ];
 
-      options.forEach((option, i) => {
+      optionsi.forEach((option, i) => {
         const position = positions[i];
+        console.log(position);
         const vx = (Math.random() - 0.5) * SPEED;
         const vy = (Math.random() - 0.5) * SPEED;
         asteroids.push(new Asteroid(position, { x: vx, y: vy }, option));
+        console.log("hi",option,i,asteroids); 
       });
+      console.log(asteroids);
     }
 
     function displayQuestion() {
@@ -185,7 +191,7 @@ export default function Game() {
     }
 
     function checkScore() {
-      if (score >= 300 && !lessonUpdated) {
+      if (score >= 200 && !lessonUpdated) {
         setLessonUpdated(true);
         updateLessonCompletion(language, lessonId, true);
         alert(`Congratulations! You've completed the ${level} level!`);
@@ -197,13 +203,13 @@ export default function Game() {
       if (scoreElement) {
         scoreElement.textContent = `Score: ${score}`;
       }
-      checkScore();
     }
 
     function nextQuestion() {
       currentQuestionIndex++;
       if (currentQuestionIndex >= gameQuestions.length) {
         alert(`Game Over! Your final score is ${score}`);
+        checkScore();
         navigate("/path");
       } else {
         spawnAsteroids();

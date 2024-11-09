@@ -1,100 +1,98 @@
 /* Scoped CSS for Lecture Path Page */
 .lecture-path-page {
-  background-image: url('/img/dashboard.png'); /* Ensure the path is correct */
+  background-image: url('/img/dashboard.png'); /* Make sure the path is correct */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  margin: 0;
-  padding: 0;
   color: #fff;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.lecture-path-page .path-title {
+.path-title {
   font-size: 3rem;
   font-weight: bold;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px; /* Reduced to move it up slightly */
+  margin-bottom: 20px;
   text-align: center;
+  animation: fadeIn 0.8s ease-out;
 }
 
-.lecture-path-page .lecture-buttons-container {
+.lecture-buttons-container {
   font-family: 'Press Start 2P', cursive, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 40px;
   color: #cb1dcd;
-  margin-top: 180px; /* Increased to create more space above */
+  margin-top: 80px;
 }
 
-.lecture-path-page .lecture-button {
+.lecture-button {
   font-family: 'Press Start 2P', cursive, Arial, sans-serif;
-  width: 300px; /* Increased width */
-  height: 120px; /* Increased height */
-  font-size: 1.4rem; /* Slightly adjusted font size */
-  font-weight: bold;
-  color: white;
+  width: 280px;
+  height: 100px;
+  font-size: 1.3rem;
+  color: #fff;
   background-color: #d2a119;
   border: none;
-  border-radius: 20px; /* Less round for a rectangular look */
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 10px;
-  overflow-wrap: break-word; /* Wraps text inside the button */
+  overflow-wrap: break-word;
 }
 
-.lecture-path-page .lecture-button:hover {
+.lecture-button:hover {
   background-color: #c29117;
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-.lecture-path-page .lecture-button:disabled {
+.lecture-button:disabled {
   background-color: #8B4513;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Individual styles for each level */
-.lecture-path-page .lecture-button.beginner {
-  background-color: #28a745; /* Green for Beginner */
+.lecture-button.beginner {
+  background-color: #28a745;
 }
 
-.lecture-path-page .lecture-button.intermediate {
-  background-color: #ffc107; /* Yellow for Intermediate */
+.lecture-button.intermediate {
+  background-color: #ffc107;
 }
 
-.lecture-path-page .lecture-button.expert {
-  background-color: #dc3545; /* Red for Expert */
+.lecture-button.expert {
+  background-color: #dc3545;
 }
 
-.lecture-path-page .lecture-button .level-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.lecture-path-page .progress-line {
-  width: 150px;
+.progress-line {
+  width: 140px;
   height: 4px;
   background-color: #8B4513;
   border-radius: 2px;
+  transition: background-color 0.3s ease;
 }
 
-.lecture-path-page .progress-line.completed {
+.progress-line.completed {
   background-color: #d2a119;
 }
 
-.lecture-path-page .drawer {
+.drawer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -105,24 +103,22 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  animation: slideUp 0.5s ease-out;
 }
 
-.lecture-path-page .drawer-content {
+.drawer-content {
   text-align: center;
   padding: 16px;
+  max-width: 500px;
 }
 
-.lecture-path-page .drawer-content h4 {
+.drawer-content h4 {
   margin: 0;
   font-size: 1.5rem;
+  animation: fadeIn 0.8s ease-out;
 }
 
-.lecture-path-page .drawer-content h5 {
-  margin-top: 8px;
-  font-size: 1.25rem;
-}
-
-.lecture-path-page .start-lecture-button {
+.start-lecture-button {
   font-family: 'Press Start 2P', cursive, Arial, sans-serif;
   width: 100%;
   max-width: 300px;
@@ -131,30 +127,42 @@
   color: white;
   background-color: #d2a119;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   margin-top: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.lecture-path-page .start-lecture-button:hover {
+.start-lecture-button:hover {
   background-color: #c29117;
+  transform: scale(1.05);
 }
 
-.lecture-path-page .drawer-close-button {
+.drawer-close-button {
   font-family: 'Press Start 2P', cursive, Arial, sans-serif;
   margin-top: 8px;
   padding: 8px 16px;
   color: #d2a119;
   background-color: transparent;
   border: 1px solid #d2a119;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.lecture-path-page .drawer-close-button:hover {
+.drawer-close-button:hover {
   background-color: #d2a119;
   color: white;
   transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
