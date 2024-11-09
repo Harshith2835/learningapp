@@ -140,9 +140,9 @@ The frontend is developed using **React** and utilizes **React Router** for navi
     ```
 3. Start the frontend:
     ```bash
-    npm start
+    npm run dev
     ```
-4. Open your browser and go to `http://localhost:3000`.
+4. Open your browser and go to `http://localhost:5173`.
 
 ---
 
