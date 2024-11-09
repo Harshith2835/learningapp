@@ -199,7 +199,7 @@ export default function Game() {
     }
 
     function checkScore() {
-      if (score >= 300 && !lessonUpdated) {
+      if (score >= 200 && !lessonUpdated) {
         setLessonUpdated(true);
         updateLessonCompletion(language, lessonId, true);
         showFeedback(`Congratulations! You've completed the ${level} level!`, "yellow");
